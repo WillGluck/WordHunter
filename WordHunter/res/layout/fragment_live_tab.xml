@@ -5,10 +5,9 @@
     android:orientation="vertical" 
     android:gravity="center">
     
-    <TextView 
-        android:layout_height="wrap_content"
-		android:layout_width="wrap_content"
-        android:text="Live Tab"/>
-    
+	<TextureView 
+	    android:id="@+id/live_tab_view"
+	    android:layout_height="fill_parent"
+	    android:layout_width="fill_parent"/>    
 
 </LinearLayout>

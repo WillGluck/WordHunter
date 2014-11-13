@@ -19,6 +19,7 @@
         android:layout_weight="2.5"
         android:layout_height="0dp"
         android:layout_width="fill_parent"
+        android:baselineAligned="false"
         android:orientation="horizontal"
         android:weightSum="10"
         android:background="@color/light_blue">
@@ -40,6 +41,7 @@
     	       	android:textSize="16sp"/>
     	    
     	    <EditText 
+    	        android:id="@+id/hunt_screen_search_word"
     	        android:layout_height="wrap_content"
     	        android:layout_width="fill_parent"
     	        android:layout_margin="15dp"
@@ -55,6 +57,7 @@
     	    android:gravity="center">
     	    
     	    <Button 
+    	        android:id="@+id/hunt_screen_hunt_button"
     	        android:layout_height="wrap_content"
     	        android:layout_width="wrap_content"    	        
     	        android:text="@string/hunt_screen_hunt_btn"
