@@ -11,15 +11,15 @@
     
     <FrameLayout
         android:id="@+id/hunt_screen_tab_content"
-        android:layout_weight="6.5"
+        android:layout_weight="7"
         android:layout_height="0dp"
         android:layout_width="fill_parent"/>
     
     <LinearLayout 
-        android:layout_weight="2.5"
+        android:layout_weight="2"
         android:layout_height="0dp"
         android:layout_width="fill_parent"
-        android:baselineAligned="false"
+        android:baselineAligned="true"
         android:orientation="horizontal"
         android:weightSum="10"
         android:background="@color/light_blue">
