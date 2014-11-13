@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">WordHunter</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    
+    <string name="hunt_screen_live_tab">Live!</string>
+    <string name="hunt_screen_archive_tab">Archive</string>
+    <string name="hunt_screen_search_text">Word I\'m looking for&#8230;</string>
+    <string name="hunt_screen_hunt_btn">Hunt!</string>
+    
+    <string name="hunt_screen_dialog_title">Ops&#8230;</string>
+    <string name="hunt_screen_dialog_text">We really sorry\n\n
+        We could not find the word\n
+        you are looking for\n\n
+        What should we do?</string>
+   	<string name="hunt_screen_dialog_ok_button">OK =(</string>
+   	<string name="hunt_screen_dialog_another_word_button">Try Another Word</string>
+   	
+   	<string name="result_screen_go_back_button">Go Back</string>
+   	<string name="result_screen_title_label">What we found&#8230;</string>
+   	<string name="result_screen_zoom_out_button">Zoom Out</string>
+   	<string name="result_screen_previous_button">Previous</string>
+   	<string name="result_screen_next_button">Next</string>
+
+</resources>
+
+
