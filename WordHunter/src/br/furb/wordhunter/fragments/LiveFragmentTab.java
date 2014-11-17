@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import android.app.Fragment;
 import android.graphics.SurfaceTexture;
-import android.graphics.drawable.GradientDrawable.Orientation;
 import android.hardware.Camera;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -40,7 +39,6 @@ public class LiveFragmentTab extends Fragment implements TextureView.SurfaceText
 	private void initCamera(View view) {
 		this.textureView = (TextureView) view.findViewById(R.id.live_tab_view);
 		this.textureView.setSurfaceTextureListener(this);
-		this.textureView.setRotation(90.0f);
 	}
 
 	@Override
@@ -48,6 +46,7 @@ public class LiveFragmentTab extends Fragment implements TextureView.SurfaceText
 		this.camera = Camera.open();
 		try {
 			this.camera.setPreviewTexture(surfaceTexture);
+			this.camera.setDisplayOrientation(90);
 			this.camera.startPreview();			
 		} catch (IOException ioe) {
 			ioe.printStackTrace();
@@ -63,7 +62,7 @@ public class LiveFragmentTab extends Fragment implements TextureView.SurfaceText
 
 	@Override
 	public void onSurfaceTextureSizeChanged(SurfaceTexture surfaceTexture, int width, int height) {
-		//Nadica.
+
 	}
 
 	@Override

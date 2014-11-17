@@ -4,9 +4,12 @@ import android.app.ActionBar;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 import br.furb.wordhunter.fragments.ArchiveFragmentTab;
 import br.furb.wordhunter.fragments.LiveFragmentTab;
@@ -30,7 +33,8 @@ public class HuntScreenActivity extends FragmentActivity {
 	private Fragment archiveFragmentTab = new ArchiveFragmentTab();
 	
 	//Componentes de tela que manteremos referência.
-	Button huntButton;
+	private Button huntButton;
+	private EditText searchWord;
 	
 
 	@Override
@@ -39,12 +43,11 @@ public class HuntScreenActivity extends FragmentActivity {
 		setContentView(R.layout.activity_hunt_screen);
 		
 		this.initTabs();
-		this.initScreenComponents();
-				
+		this.initScreenComponents();				
 	}
 	
 	/**b
-	 * Inicializa as Tabs, seus listeners e por ai vai. 
+	 * Inicializa as Tabs, seus listeners e por ai vai.
 	 */
 	private void initTabs() {
 		
@@ -69,9 +72,13 @@ public class HuntScreenActivity extends FragmentActivity {
 	 * Inicializa os componentes de tela (carrega, seta listeners, e o que for necessário).
 	 */
 	private void initScreenComponents() {
+		//Botão de busca.
 		this.huntButton = (Button) findViewById(R.id.hunt_screen_hunt_button);
 		this.huntButton.setEnabled(false);
-		this.huntButton.setOnClickListener(this.getOnHuntButtonClickListener());		
+		this.huntButton.setOnClickListener(this.getOnHuntButtonClickListener());
+		//Campo de texto.
+		this.searchWord = (EditText) findViewById(R.id.hunt_screen_search_word);
+		searchWord.addTextChangedListener(this.getTextChangeWatcher());
 	}	
 	
 	/**
@@ -86,10 +93,30 @@ public class HuntScreenActivity extends FragmentActivity {
 		};
 	}
 	
+	/** 
+	 * @return TextWatcher para habilitar ou não o botão de busca de acordo com a presença ou não de texto no campo de busca de palavra.
+	 */
+	private TextWatcher getTextChangeWatcher() {
+		return new TextWatcher() {			
+			@Override
+			public void onTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {}
+			
+			@Override
+			public void beforeTextChanged(CharSequence arg0, int arg1, int arg2,int arg3) {}
+			
+			@Override
+			public void afterTextChanged(Editable editable) {
+				boolean hasText =  HuntScreenActivity.this.searchWord.getText().toString().trim().length() > 0;
+				HuntScreenActivity.this.huntButton.setEnabled(hasText);	
+			}
+		};
+	}
+	
 	/**
 	 * Ação de busca de palavra na imagem de input.
 	 */
 	private void huntWord() {
 		Toast.makeText(this, "Busca!", Toast.LENGTH_LONG).show();
 	}
+	
 }

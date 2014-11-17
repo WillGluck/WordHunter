@@ -4,10 +4,18 @@
     android:layout_height="match_parent"
     android:orientation="vertical" 
     android:gravity="center">
-
-    <TextView 
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:text="Archive Tab"/>
+    
+    <HorizontalScrollView 
+        android:id="@+id/archive_tab_scroll_view"
+        android:layout_height="fill_parent"
+        android:layout_width="fill_parent">        
+	
+	    <TextView 
+	        android:layout_height="wrap_content"
+	        android:layout_width="wrap_content"
+	        android:text="Archive Tab"
+	        android:layout_gravity="center"/>
+        
+    </HorizontalScrollView>
 
 </LinearLayout>
