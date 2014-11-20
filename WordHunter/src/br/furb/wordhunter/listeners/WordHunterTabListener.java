@@ -18,18 +18,20 @@ import com.example.wordhunter.R;
 public class WordHunterTabListener implements TabListener {
 	
 	private Fragment fragmentTab;
+	private String tag;
 
 	/**
 	 * Construtor
 	 * @param fragmentTab tab
 	 */
-	public WordHunterTabListener(Fragment fragmentTab) {
+	public WordHunterTabListener(Fragment fragmentTab, String tag) {
 		this.fragmentTab = fragmentTab;
+		this.tag = tag;
 	}
 	
 	@Override
 	public void onTabSelected(Tab tab, FragmentTransaction fragmentTransaction) {
-		fragmentTransaction.replace(R.id.hunt_screen_tab_content, this.fragmentTab);
+		fragmentTransaction.replace(R.id.hunt_screen_tab_content, this.fragmentTab, this.tag);
 	}
 
 	@Override

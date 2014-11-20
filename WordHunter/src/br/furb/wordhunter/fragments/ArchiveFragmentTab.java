@@ -16,13 +16,26 @@ import com.example.wordhunter.R;
  * @created 12/11/2014
  *
  */
-public class ArchiveFragmentTab extends Fragment {
+public class ArchiveFragmentTab extends Fragment implements WordHunterFragmentInterface {
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.fragment_archive_tab, container, false);
-		
+		this.initGallery();
 		return view;
+	}
+	
+	/**
+	 * Inicializa a galeria.
+	 */
+	private void initGallery() {
+		//TODO
+	}
+
+	@Override
+	public byte[] getImage() {
+		//TODO
+		return new byte[0];
 	}
 
 }

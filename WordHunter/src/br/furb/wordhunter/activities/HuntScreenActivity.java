@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
+import br.furb.wordhunter.core.WordHunter;
 import br.furb.wordhunter.fragments.ArchiveFragmentTab;
 import br.furb.wordhunter.fragments.LiveFragmentTab;
 import br.furb.wordhunter.listeners.WordHunterTabListener;
@@ -36,6 +36,8 @@ public class HuntScreenActivity extends FragmentActivity {
 	private Button huntButton;
 	private EditText searchWord;
 	
+	//Outros atributos
+	//private WordHunter wordHunter = new WordHunter();	
 
 	@Override
 	protected void onCreate(Bundle arg0) {
@@ -43,10 +45,13 @@ public class HuntScreenActivity extends FragmentActivity {
 		setContentView(R.layout.activity_hunt_screen);
 		
 		this.initTabs();
-		this.initScreenComponents();				
+		this.initScreenComponents();	
+		this.initDialogs();
 	}
 	
-	/**b
+	//Métodos de inicialização da Activity.
+	
+	/**
 	 * Inicializa as Tabs, seus listeners e por ai vai.
 	 */
 	private void initTabs() {
@@ -60,8 +65,8 @@ public class HuntScreenActivity extends FragmentActivity {
 		//Cria as tabs e seta seus listeners.
 		this.liveTab = actionBar.newTab().setText(R.string.hunt_screen_live_tab);
 		this.archiveTab = actionBar.newTab().setText(R.string.hunt_screen_archive_tab);
-		this.liveTab.setTabListener(new WordHunterTabListener(this.liveFragmentTab));
-		this.archiveTab.setTabListener(new WordHunterTabListener(this.archiveFragmentTab));
+		this.liveTab.setTabListener(new WordHunterTabListener(this.liveFragmentTab, WordHunter.LIVE));
+		this.archiveTab.setTabListener(new WordHunterTabListener(this.archiveFragmentTab, WordHunter.ARCHIVE));
 		
 		//Adiciona as tabs na actionBar.
 		actionBar.addTab(this.liveTab);
@@ -80,6 +85,12 @@ public class HuntScreenActivity extends FragmentActivity {
 		this.searchWord = (EditText) findViewById(R.id.hunt_screen_search_word);
 		searchWord.addTextChangedListener(this.getTextChangeWatcher());
 	}	
+	
+	private void initDialogs() {
+		
+	}
+	
+	//Listeners.
 	
 	/**
 	 * @return OnClickListener do botão huntWord.
@@ -112,11 +123,27 @@ public class HuntScreenActivity extends FragmentActivity {
 		};
 	}
 	
+	//Ações.
+	
 	/**
 	 * Ação de busca de palavra na imagem de input.
 	 */
 	private void huntWord() {
-		Toast.makeText(this, "Busca!", Toast.LENGTH_LONG).show();
+		this.getImage(); 		
+		//TODO
+	}
+	
+	/**
+	 * @return Imagem à ser processada.
+	 */
+	private byte[] getImage() {
+		//Verifica qual fragment está ativo e recupera a imagem dele.
+		Fragment tempArchiveFragment = getFragmentManager().findFragmentByTag(WordHunter.ARCHIVE);
+		if (tempArchiveFragment != null && tempArchiveFragment.isVisible()) {
+			return ((ArchiveFragmentTab)this.archiveFragmentTab).getImage();
+		} else { //if (tempLiveFragment != null && tempLiveFragment.isVisible()) {
+			return ((LiveFragmentTab)this.liveFragmentTab).getImage();
+		}
 	}
 	
 }

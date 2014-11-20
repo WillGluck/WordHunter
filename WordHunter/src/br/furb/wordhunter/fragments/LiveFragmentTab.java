@@ -21,7 +21,7 @@ import com.example.wordhunter.R;
  * @created 12/11/2014
  *
  */
-public class LiveFragmentTab extends Fragment implements TextureView.SurfaceTextureListener {
+public class LiveFragmentTab extends Fragment implements TextureView.SurfaceTextureListener, WordHunterFragmentInterface {
 		
 	private Camera camera;
 	private TextureView textureView;
@@ -40,6 +40,14 @@ public class LiveFragmentTab extends Fragment implements TextureView.SurfaceText
 		this.textureView = (TextureView) view.findViewById(R.id.live_tab_view);
 		this.textureView.setSurfaceTextureListener(this);
 	}
+
+	@Override
+	public byte[] getImage() {
+		//TODO
+		return new byte[0];
+	}
+	
+	//Métodos do Listener da textureView.
 
 	@Override
 	public void onSurfaceTextureAvailable(SurfaceTexture surfaceTexture, int width, int height) {		
