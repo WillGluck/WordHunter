@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import br.furb.wordhunter.core.HistoricalManager;
 import br.furb.wordhunter.core.WordHunter;
 import br.furb.wordhunter.fragments.ArchiveFragmentTab;
 import br.furb.wordhunter.fragments.LiveFragmentTab;
@@ -37,7 +38,8 @@ public class HuntScreenActivity extends FragmentActivity {
 	private EditText searchWord;
 	
 	//Outros atributos
-	//private WordHunter wordHunter = new WordHunter();	
+	private WordHunter wordHunter = new WordHunter();
+	private HistoricalManager historicalManager = new HistoricalManager();
 
 	@Override
 	protected void onCreate(Bundle arg0) {

@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.opencv.core.Mat;
 
-import android.graphics.Rect;
+import br.furb.wordhunter.models.Rect;
 
 
 /**
